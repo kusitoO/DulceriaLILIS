@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'usuarios',
+    'productos',
+    'proveedores',
+    'compras',
+
 ]
 
 MIDDLEWARE = [
@@ -79,6 +84,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'usuarios.Usuario'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
