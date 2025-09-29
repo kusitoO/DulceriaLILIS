@@ -17,7 +17,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from usuarios import views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('compras/', include('compras.urls')),  
+
+    path("", views.home, name='home'),
+    path("registrarse/", views.registrarse, name='registrarse'),
+    path("tareas/", views.tareas, name='tareas'),
+    path("tasks_completed/", views.tasks_completed, name='tasks_completed'),
+    path("tareas/crear/", views.crear_tarea, name='crear_tarea'),
+    path("tareas/<int:tarea_id>/", views.tareas_detalles, name='tareas_detalles'),
+    path("tareas/<int:tarea_id>/completado", views.tarea_completada, name='tarea_completada'),
+    path("tareas/<int:tarea_id>/eliminar", views.tarea_eliminada, name='tarea_eliminada'),
+
+    path("iniciar_sesion/", views.iniciar_sesion, name='iniciar_sesion'),
+    path("logout/", views.cerrar_sesion, name='logout'),
+
+
 ]

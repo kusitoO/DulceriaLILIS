@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.views.generic import ListView
@@ -16,3 +18,10 @@ class SolicitudCompraCreateView(CreateView):
     fields = "__all__"  # puedes personalizar los campos
     template_name = "compras/solicitud_form.html"
     success_url = reverse_lazy("solicitud_list")
+
+@login_required
+def index(request):
+    return HttpResponse(f"""
+        <h1>Bienvenido {request.user.username} a Compras</h1>
+        <p><a href='/logout/'>Cerrar sesión</a></p>
+    """)
